@@ -20,7 +20,6 @@ export class WsAdapter implements WebSocketAdapter {
     handlers: MessageMappingProperties[],
     process: (data: any) => Observable<any>
   ) {
-    console.log('bindMessageHandlers emit')
     fromEvent(client, 'message')
       .pipe(
         mergeMap((data: MessageEvent) => this.bindMessageHandler(data, handlers, process)),
@@ -40,8 +39,6 @@ export class WsAdapter implements WebSocketAdapter {
     } catch (error) {
       message = buffer;
     }
-    console.log('handler message formatted: ', message);
-    console.log('handlers:', handlers);
     const messageHandler = handlers.find(
       handler => handler.message === message.event,
     );

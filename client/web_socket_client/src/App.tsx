@@ -1,7 +1,6 @@
-import React, { useMemo, useState } from 'react'
+import React, { useState } from 'react'
 import { Input, Button } from 'antd';
 import style from './style.module.less';
-import { ChatMessageWS } from './common/wx';
 import { Status, useChatWS } from './hooks/useWS';
 import classNames from 'classnames';
 import { useMemoizedFn } from 'ahooks';
@@ -21,7 +20,7 @@ function App() {
 
   const handleSend = useMemoizedFn(() => {
     if (content) {
-      const data = { content };
+      const data = { content, event: 'hello' };
       wsInstance?.send(JSON.stringify(data));
     }
   })

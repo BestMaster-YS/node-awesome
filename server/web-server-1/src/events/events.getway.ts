@@ -21,7 +21,6 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
   async handleConnection() {
     this.users++;
-    console.log('connect user: ', this.users);
     this.server.emit('users', this.users);
   }
 
@@ -33,12 +32,11 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect {
   @SubscribeMessage('chat')
   async onChat(client: Socket, message: string) {
     client.broadcast.emit('chat', message);
-    return 
+    return;
   }
 
   @SubscribeMessage('hello')
   async onHello(@ConnectedSocket() client: Socket, @MessageBody() message: any) {
-    console.log('收到消息 hello');
     client.send(JSON.stringify({ event: 'tmp', data: '临时信息' }));
     return {
       event: 'hello',

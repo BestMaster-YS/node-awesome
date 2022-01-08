@@ -1,0 +1,33 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
+  "rushVersion": "5.55.0",
+  "pnpmVersion": "6.7.1",
+  "pnpmOptions": {
+    "strictPeerDependencies": false,
+    "useWorkspaces": true
+  },
+  "nodeSupportedVersionRange": ">=12.13.0 <13.0.0 || >=14.15.0 <15.0.0 || >= 16.10.0",
+  "gitPolicy": {},
+  "repository": {},
+  "eventHooks": {
+    "preRushInstall": [],
+    "postRushInstall": [],
+    "preRushBuild": [],
+    "postRushBuild": []
+  },
+  "variants": [],
+  "projects": [
+    {
+      "packageName": "web_socket_client",
+      "projectFolder": "client/web_socket_client"
+    },
+    {
+      "packageName": "web_socket_server",
+      "projectFolder": "server/web_socket_server"
+    },
+    {
+      "packageName": "web-server-1",
+      "projectFolder": "server/web-server-1"
+    }
+  ]
+}

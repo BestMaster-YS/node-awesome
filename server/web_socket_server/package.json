@@ -1,0 +1,38 @@
+{
+  "name": "web_socket_server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rimraf dist && rollup --config --environment NODE_ENV:production",
+    "dev": "rimraf dist && rollup --config --watch --environment NODE_ENV:development",
+    "server": "nodemon dist/index.js --config"
+  },
+  "author": "bestmasterliubin",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "~4.4.3",
+    "@types/node": "~16.10.3",
+    "gulp": "~4.0.2",
+    "@types/lodash": "~4.14.175",
+    "rimraf": "~3.0.2",
+    "rollup": "~2.58.0",
+    "tslib": "~2.3.1",
+    "@rollup/plugin-node-resolve": "~13.0.5",
+    "@rollup/plugin-typescript": "~8.2.5",
+    "@rollup/plugin-commonjs": "~21.0.0",
+    "@optimize-lodash/rollup-plugin": "~2.1.0",
+    "nodemon": "~2.0.13",
+    "@types/express": "~4.17.13",
+    "@rollup/plugin-json": "~4.1.0"
+  },
+  "dependencies": {
+    "socket.io": "~4.3.0",
+    "lodash": "~4.17.21",
+    "fp-ts": "~2.11.5",
+    "ramda": "~0.27.1",
+    "express": "~4.17.1",
+    "express-cors": "~0.0.3"
+  }
+}

@@ -17,7 +17,9 @@
     "antd": "~4.16.13",
     "socket.io-client": "~4.3.0",
     "classnames": "~2.3.1",
-    "ahooks": "~3.1.5"
+    "ahooks": "~3.1.5",
+    "@ant-design/icons": "~4.7.0",
+    "recoil": "~0.5.2"
   },
   "devDependencies": {
     "@types/react": "^17.0.0",

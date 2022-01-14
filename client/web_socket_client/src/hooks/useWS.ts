@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react"
-import { message } from 'antd';
+import {useEffect, useRef, useState} from "react"
+import {message} from 'antd';
 
 export enum Status {
   opened,
@@ -18,17 +18,13 @@ export const useChatWS = () => {
   const [ status, setStatus ] = useState<WSStatus>({ id: '', state: Status.disconnected });
 
   useEffect(() => {
-    const ChatMessageWS = new WebSocket('ws://127.0.0.1:3002');
-    chatWsRef.current = ChatMessageWS;
+    chatWsRef.current = new WebSocket('ws://127.0.0.1:3002');
 
     chatWsRef.current.onopen = function() {
       setStatus((status) => {
         status.state = Status.opened;
         return status;
       });
-    }
-    chatWsRef.current.onmessage = function(reqMessage) {
-      message.info(reqMessage.data);
     }
 
     chatWsRef.current.onclose = function() {

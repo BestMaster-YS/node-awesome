@@ -5,7 +5,9 @@ import { Status, useChatWS } from './hooks/useWS';
 import classNames from 'classnames';
 import { useMemoizedFn } from 'ahooks';
 import { TopCard } from './TopCard';
-import { useWSMessageListUpdate } from './recoil/messageListUpdate';
+import { useWSServerMessageListUpdate } from './recoil/messageListUpdate';
+import {Message} from "./common/message";
+import Cookie from 'js-cookie';
 
 const { TextArea } = Input;
 
@@ -15,7 +17,7 @@ function App() {
 
   const isConnected = status.state === Status.opened;
 
-  useWSMessageListUpdate(wsInstance);
+  useWSServerMessageListUpdate(wsInstance);
 
   const handleChange = useMemoizedFn((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     onChange(e.target.value);
@@ -23,6 +25,15 @@ function App() {
 
   const handleSend = useMemoizedFn(() => {
     if (content) {
+      const message: Message = {
+        type: 'client',
+        process: 'chat',
+        data: {
+          content,
+          userId: Cookie.get('chat_user_id'),
+        },
+        time: Date.now(),
+      }
       const data = { content, event: 'hello' };
       wsInstance?.send(JSON.stringify(data));
     }

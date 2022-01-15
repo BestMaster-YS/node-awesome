@@ -1,3 +1,5 @@
+import {ChatUser} from "../recoil/atom/chatUserListAtom";
+
 export type Process =
   | 'chat'
   | 'group';
@@ -7,7 +9,7 @@ export type MessageType =
   | 'server'
   ;
 
-export type Message<T = Record<string, any>> = {
+export type Message<T = MessageResponseData | MessageRequestData> = {
   data: T;
   process: Process;
   time: number;
@@ -15,3 +17,12 @@ export type Message<T = Record<string, any>> = {
 }
 
 
+export interface MessageResponseData {
+  user: ChatUser;
+  content: string;
+}
+
+export interface MessageRequestData {
+  userId?: string;
+  content: string;
+}

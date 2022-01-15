@@ -1,6 +1,7 @@
 import { atom } from 'recoil';
 
 export interface ChatUser {
+  id: string;
   avatar: string;
   name: string;
   latestChatTime: number;
